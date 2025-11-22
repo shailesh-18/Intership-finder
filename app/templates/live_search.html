@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Live Internship Search</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}"
+  />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>Live Internship Search</h1>
+      <p class="subtitle">
+        Enter your requirements → scrape fresh internships → see only relevant ones
+      </p>
+      <p class="subtitle">
+        <a href="{{ url_for('api.home') }}" style="color:#60a5fa; text-decoration:none;">
+          ← Go to Recommendation (from DB)
+        </a>
+      </p>
+    </header>
+
+    <section class="card">
+      <h2>Your Requirements</h2>
+      <form id="live-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="live-skills">Skills (comma-separated)</label>
+            <input
+              id="live-skills"
+              type="text"
+              placeholder="e.g. python, video editing, content writing"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="live-interests">Interests</label>
+            <input
+              id="live-interests"
+              type="text"
+              placeholder="e.g. social media, design, backend dev"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="live-location">Location preference</label>
+            <input
+              id="live-location"
+              type="text"
+              placeholder="e.g. remote, Delhi, Mumbai"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="live-experience">Experience level</label>
+            <select id="live-experience">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="live-pages">Pages per source to scrape</label>
+            <input
+              id="live-pages"
+              type="number"
+              min="1"
+              max="10"
+              value="1"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="live-top-k">Number of results</label>
+            <input
+              id="live-top-k"
+              type="number"
+              min="1"
+              max="50"
+              value="10"
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="primary-btn">
+          Search Internships (Live)
+        </button>
+      </form>
+      <p id="live-status" class="status"></p>
+    </section>
+
+    <section class="card">
+      <h2>Live Search Results</h2>
+      <div id="live-results"></div>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/live.js') }}"></script>
+</body>
+</html>
